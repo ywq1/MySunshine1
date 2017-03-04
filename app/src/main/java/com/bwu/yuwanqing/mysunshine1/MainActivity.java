@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if(savedInstanceState == null) {
+        if(savedInstanceState == null) {//如果当前状态为空
             getSupportFragmentManager().beginTransaction().add(R.id.fragment,
                     new MainActivityFragment()).commit();
         }
