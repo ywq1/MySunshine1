@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if(savedInstanceState == null) {//如果当前状态为空
             getSupportFragmentManager().beginTransaction().add(R.id.fragment,
-                    new MainActivityFragment()).commit();
+                    new ForecastFragment()).commit();
         }
     }
 
