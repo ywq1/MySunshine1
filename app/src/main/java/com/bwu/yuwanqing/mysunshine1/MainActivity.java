@@ -18,8 +18,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if(savedInstanceState == null) {//如果当前状态为空
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment,
-                    new ForecastFragment()).commit();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment, new ForecastFragment())
+                    .commit();
         }
     }
 
