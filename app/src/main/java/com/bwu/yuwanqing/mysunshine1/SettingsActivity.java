@@ -14,11 +14,11 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Add 'general' preferences, defined in the XML file
-        // TODO: Add preference from XML
+        addPreferencesFromResource(R.xml.pref_general);
 
         // For all preferences, attach an OnPreferenceChangeListener so the UI summary can be
         // updated when the preference changes
-        // TODO: Add preference
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_location_key)));
     }
 
     /**
@@ -42,7 +42,7 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
         if (preference instanceof ListPreference) {
             //For list preferences, look up the correct display value in
             //the preference's 'entries' list (since they have separate labels/values。
-            ListPreference listPreference = (ListPreference) preference;
+            ListPreference listPreference = (ListPreference) preference;//下来框选择控件
             int prefIndex = listPreference.findIndexOfValue(stringValue);
             if (prefIndex >= 0) {
                 preference.setSummary(listPreference.getEntries()[prefIndex]);
