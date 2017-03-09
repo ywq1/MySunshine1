@@ -11,7 +11,8 @@
         android:text="@string/hello_world"
         android:id="@+id/detail_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"/>
 
 
 </RelativeLayout>

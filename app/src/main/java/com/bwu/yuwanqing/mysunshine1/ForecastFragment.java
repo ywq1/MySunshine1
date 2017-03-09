@@ -1,9 +1,11 @@
 package com.bwu.yuwanqing.mysunshine1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.util.Log;
@@ -60,11 +62,16 @@ public class ForecastFragment extends Fragment {
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
             FetchWeatherTask weatherTask = new FetchWeatherTask();
-            weatherTask.execute("beijing");
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            //使用这个方法会自动使用当前程序的包名作为前缀来命名SharedPreferences文件
+            String location = prefs.getString(getString(R.string.pref_location_key),getString(R.string.pref_location_default ));
+            //以键值对形式存储，（key，value）
+            weatherTask.execute(location);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Create some dummy data for the ListView. Here's a sample weekly forecast

@@ -3,15 +3,19 @@ package com.bwu.yuwanqing.mysunshine1;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * A placeholder fragment containing a simple view.
  */
 public class DetailActivityFragment extends Fragment {
+    private final String LOG_TAG1 = DetailActivityFragment.class.getSimpleName();
 
     public DetailActivityFragment() {
     }
@@ -24,7 +28,8 @@ public class DetailActivityFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         if(intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
             String forecastStr = intent.getStringExtra(Intent.EXTRA_TEXT);
-            ((TextView) rootView.findViewById(R.id.detail_text)).setText(forecastStr);
+            TextView textView = (TextView) rootView.findViewById(R.id.detail_text);
+            textView.setText(forecastStr);
         }
         return rootView;
     }
