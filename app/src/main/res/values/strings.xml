@@ -13,6 +13,25 @@
     <!-- Key name for storing location in SharedPreferences [CHAR LIMIT=NONE] -->
     <string name="pref_location_key" translatable="false">location</string>
 
-    <!-- Default postal vode for location preference [CHAR LIMIT=NONE] -->
+    <!-- Default postal code for location preference [CHAR LIMIT=NONE] -->
     <string name="pref_location_default" translatable="false">beijing</string>
+
+    <!-- Label for the temperature units preference [CHAR LIMIT=30] -->
+    <string name="pref_unit_label">Temperature Unit</string>
+
+    <!-- Label for centigrade option in temperature unit preference [CHAR LIMIT=25] -->
+    <string name="pref_unit_label_centigrade">Centigrade</string>
+
+    <!-- Label for  option in temperature unit preference [CHAR LIMIT=25] -->
+    <string name="pref_unit_label_fahrenheit">Fahrenheit</string>
+
+    <!-- Key name for temperature unit preference in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_unit_key" translatable="false">unit</string>
+
+    <!-- Value in SharedPreferences for centigrade temperature unit option [CHAR LIMIT=NONE] -->
+    <string name="pref_unit_centigrade" translatable="false">c</string>
+
+    <!-- Value in SharedPreferences for fahrenheit temperature unit option [CHAR LIMIT=NONE] -->
+    <string name="pref_unit_fahrenheit" translatable="false">f</string>
+
 </resources>

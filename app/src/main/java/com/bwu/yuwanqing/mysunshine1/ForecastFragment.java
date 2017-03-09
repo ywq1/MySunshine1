@@ -250,6 +250,13 @@ public class ForecastFragment extends Fragment {
             String daily = resultsObject.getString("daily");
             JSONArray dailyArray = new JSONArray(daily);
             String[] resultStrs = new String[numDays];
+            //Data is fetched in Celsius by default.
+            //If user perfers to see in Fahrenheit, convert the values here.
+            //We do this rather than fetching in Fahrenheit so that the user can
+            //change this option without us having to re-fetch the data once
+            //we start storing the values in a database.
+            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String unitType = sharedPrefs.getString("unit", "c");
             for (int i = 0; i < dailyArray.length(); i++) {
                 String day;
                 String description;
@@ -259,7 +266,7 @@ public class ForecastFragment extends Fragment {
                 description = dayForecast.getString(OWM_TEXTDAY);
                 double high = dayForecast.getDouble(OWM_HIGH);
                 double low = dayForecast.getDouble(OWM_LOW);
-                highAndLow = formatHighLows(high, low);
+                highAndLow = formatHighLows(high, low, unitType);
                 resultStrs[i] = day + " - " + description + " _ " + highAndLow;
                 }
             return resultStrs;
@@ -267,7 +274,14 @@ public class ForecastFragment extends Fragment {
         /**
          * Prepare the weather high/lows for presentation.
          */
-        private String formatHighLows(double high, double low) {
+        private String formatHighLows(double high, double low, String unitType) {
+            if (unitType.equals(getString(R.string.pref_unit_fahrenheit))) {
+                high = (high * 1.8) + 32;
+                low = (low * 1.8) + 32;
+            }
+            else if (!unitType.equals(getString(R.string.pref_unit_centigrade))) {
+                Log.d(LOG_TAG, "Unit type not found: " + unitType);
+            }
             //For presentation, assume the user doesn't care about tenths of a degree.
             long roundedHigh = Math.round(high);
             long roundedLow = Math.round(low);
